@@ -1,26 +1,55 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>{{ msg }}</h1>
+    <p>{{ counter.count }}</p>
+    <p>{{ number }}</p>
+    <div :id="titleClass">dynamic class or dynamic id</div>
+    <button @click="increment">{{ counter.count }}</button>
+    <!--    same with bottom html-->
+    <div>
+      <input :value="text" @input="onInput">
+      {{ text }}
+    </div>
+    <!--    same with above html-->
+    <div>
+      <input v-model="textModel">
+      {{ textModel }}
+    </div>
+    <ListRendering/>
+    <Computed/>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+<script setup>
+import {reactive, ref} from "vue";
+import ListRendering from "@/components/ListRendering";
+import Computed from "@/components/Computed";
+
+const counter = reactive({count: 0})
+const number = ref(0)
+const msg = ref('Hello World')
+const titleClass = ref('title')
+const text = ref('')
+const textModel = ref('')
+
+msg.value = 'changed'
+
+function increment() {
+  counter.count++
+  number.value++
 }
+
+function onInput(e) {
+  text.value = e.target.value
+}
+
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#title {
+  color: red
 }
+
 </style>

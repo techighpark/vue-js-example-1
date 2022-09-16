@@ -1,5 +1,10 @@
 <template>
   <div>
+    <LifeCycleTest/>
+  </div>
+  <div v-if="false">
+    <ParentComponent/>
+    <FormBinding/>
     <AttributeBindings/>
     <HandlingInput/>
     <h1>{{ msg }}</h1>
@@ -29,6 +34,9 @@ import ListRendering from "@/components/ListRendering";
 import Computed from "@/components/Computed";
 import HandlingInput from "@/components/HandlingInput";
 import AttributeBindings from "@/components/AttributeBindings";
+import FormBinding from "@/components/FormBinding";
+import ParentComponent from "@/components/ParentComponent";
+import LifeCycleTest from "@/components/LifeCycleTest";
 
 const counter = reactive({count: 0})
 const number = ref(0)

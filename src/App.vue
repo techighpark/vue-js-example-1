@@ -15,6 +15,7 @@
       <input v-model="textModel">
       {{ textModel }}
     </div>
+    asfasfas
     <ListRendering/>
     <Computed/>
   </div>
@@ -37,6 +38,8 @@ msg.value = 'changed'
 
 function increment() {
   counter.count++
+
+
   number.value++
 }
 

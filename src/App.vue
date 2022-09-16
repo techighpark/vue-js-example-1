@@ -1,5 +1,7 @@
 <template>
   <div>
+    <AttributeBindings/>
+    <HandlingInput/>
     <h1>{{ msg }}</h1>
     <p>{{ counter.count }}</p>
     <p>{{ number }}</p>
@@ -15,7 +17,6 @@
       <input v-model="textModel">
       {{ textModel }}
     </div>
-    asfasfas
     <ListRendering/>
     <Computed/>
   </div>
@@ -26,6 +27,8 @@
 import {reactive, ref} from "vue";
 import ListRendering from "@/components/ListRendering";
 import Computed from "@/components/Computed";
+import HandlingInput from "@/components/HandlingInput";
+import AttributeBindings from "@/components/AttributeBindings";
 
 const counter = reactive({count: 0})
 const number = ref(0)

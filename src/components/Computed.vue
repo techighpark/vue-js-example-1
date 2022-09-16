@@ -20,14 +20,19 @@
     {{ hideCompleted ? 'Show all' : 'Hide completed' }}
   </button>
 
-  <Lifecycle/>
+  <Lifecycle @emitTwo="(msg)=>this.emitMsgTwo = msg" @responseEmit="(msg)=> this.emitMsg = msg"/>
 
+  {{ emitMsg }}
+  {{ emitMsgTwo }}
 </template>
 
 <script setup>
-import {computed, ref} from 'vue'
+import {computed, ref, watch} from 'vue'
 import Lifecycle from "@/components/Lifecycle";
 
+const emitMsg = ref('hi')
+// const emitMsgTwo = ref('hi')
+const emitMsgTwo = 'hi'
 let id = 0
 const newTodo = ref('')
 const hideCompleted = ref(false)
@@ -59,6 +64,14 @@ function methodsFn() {
 const computedFn = computed(() => {
   return new Date();
 })
+
+watch(emitMsg, (newMsg) => {
+  console.log(newMsg)
+})
+// const로 선언하면 watch 안됨!!
+// watch(emitMsgTwo, (newMsg) => {
+//   console.log(newMsg)
+// })
 </script>
 
 
